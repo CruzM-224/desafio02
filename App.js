@@ -1,7 +1,4 @@
-import { Text, SafeAreaView, StyleSheet } from 'react-native';
-
-// You can import supported modules from npm
-import { Card } from 'react-native-paper';
+import { Text, SafeAreaView, StyleSheet, View } from 'react-native';
 
 // or any files within the Snack
 import AssetExample from './components/AssetExample';
@@ -13,9 +10,9 @@ export default function App() {
       <Text style={styles.paragraph}>
         Change code in the editor and watch it change on your phone! Save to get a shareable url.
       </Text>
-      <Card>
+      <View style={styles.menu}>
         <AssetExample />
-      </Card>
+      </View>
       <Menu />
     </SafeAreaView>
   );
@@ -29,9 +26,17 @@ const styles = StyleSheet.create({
     padding: 0,
   },
   paragraph: {
+    flex: 2,
     margin: 24,
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  menu: {
+    backgroundColor: '#ddd',
+    margin: 0,
+    height: 'auto',
+    width: 'auto',
+    flex: 12,
+  }
 });
