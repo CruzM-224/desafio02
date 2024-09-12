@@ -7,12 +7,14 @@ import React, {
 import { 
   Text, 
   View, 
-  StyleSheet, 
-  Image,
+  StyleSheet,
   FlatList
- } from 'react-native';
+} from 'react-native';
 
-export default function AssetExample() {
+import Elementos from './Elementos';
+
+
+export default function Comida() {
   
   //Llamada a la API
   
@@ -65,18 +67,7 @@ export default function AssetExample() {
             data={datos}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
-              <View style={styles.elementos}>
-                <View style={styles.contTitulo}>
-                  <Text style={styles.titulo}>{item.name}</Text>
-                </View>
-                <View style={styles.informacion}>
-                  <Image
-                    style={styles.image}
-                    source={{ uri: item.avatar }}
-                  />
-                  <Text style={styles.precio}>${item.price}</Text>
-                </View>
-              </View>
+              <Elementos item={item} />
             )}
           />
         </>
@@ -86,16 +77,6 @@ export default function AssetExample() {
     </View>
   );
 }
-
-/*
-async function llamadaAPI () {
-	const datos = await fetch("https://66e1111cc831c8811b53a929.mockapi.io/comida/platos")
-      .then(response => response.json())
-	console.log(datos[0].name);
-};
-
-llamadaAPI();
-*/
 
 const styles = StyleSheet.create({
   container: {
@@ -142,5 +123,11 @@ const styles = StyleSheet.create({
   },
   precio: {
     fontSize: 16,
+  },
+  buttonsCantidad: {
+    width: 30,
+    height: 30,
+    alignItems: 'center',
+    borderRadius: 50,
   },
 });

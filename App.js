@@ -1,7 +1,7 @@
 import { Text, SafeAreaView, StyleSheet, View } from 'react-native';
 
 // or any files within the Snack
-import AssetExample from './components/AssetExample';
+import Comida from './components/Comida';
 import Menu from './components/menu';
 
 export default function App() {
@@ -11,7 +11,7 @@ export default function App() {
         Change code in the editor and watch it change on your phone! Save to get a shareable url.
       </Text>
       <View style={styles.menu}>
-        <AssetExample />
+        <Comida />
       </View>
       <Menu />
     </SafeAreaView>
