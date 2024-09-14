@@ -25,3 +25,36 @@
     }
   }
 }
+{
+  "expo": {
+    "name": "Desafio2_DPS",
+    "slug": "Desafio2_DPS",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.escanor721.Desafio2_DPS"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b670ec51-7d11-4c79-bc0e-6d6e7c473184"
+      }
+    }
+  }
+}
