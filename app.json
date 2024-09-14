@@ -1,5 +1,32 @@
 {
   "expo": {
+    "name": "alimentos-y-bebidas",
+    "slug": "snack-106719c5-2477-4708-acb0-f70c72d98c07",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
+{
+  "expo": {
     "name": "Desafio2_DPS",
     "slug": "Desafio2_DPS",
     "version": "1.0.0",
