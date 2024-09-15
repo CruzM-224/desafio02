@@ -26,7 +26,7 @@ export default function Elementos({ item }) {
             <View style={styles.informacion}>
                 <Image
                 style={styles.image}
-                source={{ uri: item.avatar }}
+                source={{ uri: item.image }}
                 />
                 <Text style={styles.precio}>${item.price}</Text>
                 <Pressable 

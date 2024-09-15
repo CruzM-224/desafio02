@@ -1,14 +1,14 @@
+import * as React from 'react';
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import FoodSVG from '../assets/food';
 import CupSVG from '../assets/cup';
 import BillSVG from '../assets/bill';
 
-//Cambios en react navigator TODO
-function onePressMenu () {
-  
-}
 
-export default function AssetExample() {
+import { useNavigation } from '@react-navigation/native';
+
+export default function Menu({ routeHome, routeBev, routeBill }) {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Pressable style={({pressed}) => [
@@ -17,7 +17,7 @@ export default function AssetExample() {
           },
           styles.buttons,
         ]} 
-        onPress={onePressMenu}>
+        onPress={() => navigation.navigate(routeHome)}>
         <Text style={styles.menuElement}>
           <FoodSVG />
         </Text>
@@ -28,7 +28,7 @@ export default function AssetExample() {
           },
           styles.buttons,
         ]} 
-        onPress={onePressMenu}>
+        onPress={() => navigation.navigate(routeBev)}>
         <Text style={styles.menuElement}>
           <CupSVG />
         </Text>
@@ -39,7 +39,7 @@ export default function AssetExample() {
           },
           styles.buttons,
         ]} 
-        onPress={onePressMenu}>
+        onPress={() => navigation.navigate(routeBill)}>
         <Text style={styles.menuElement}>
           <BillSVG />
         </Text>

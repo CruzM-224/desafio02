@@ -14,14 +14,14 @@ import {
 import Elementos from './Elementos';
 
 
-export default function Comida({ datos }) {
+export default function Bebidas( {datos} ) {
   
   //Llamada a la API
   
   useEffect(() => {
-    obtencionComida({ datos })
+    obtencionBebidas({ datos })
     .then(() => {
-      console.log("Datos de comida conseguidos");
+      console.log("Datos bebidas conseguidos");
     }
     ).catch((error) => {
       console.error('Error:', error);
@@ -29,7 +29,7 @@ export default function Comida({ datos }) {
   }, []);
 
   // state con los datos
-  const [comida, setComida] = useState([]);
+  const [bebidas, setBebidas] = useState([]);
 
   // state para verificar si se ha cargado la API
   const [isPending, setIsPending] = useState([]);
@@ -37,17 +37,17 @@ export default function Comida({ datos }) {
 
   // Función para llamar a la API
 
-  async function obtencionComida({ datos }) {
+  async function obtencionBebidas({ datos }) {
     try{
       setIsPending(true);
-      let datosComida = [];
+      let datosBebidas = [];
     datos.forEach(element => {
-      if (element.type === "comida") {
-        datosComida.push(element);
+      if (element.type === "bebida") {
+        datosBebidas.push(element);
       }
     });
       startTransition(() => { 
-        setComida(datosComida);
+        setBebidas(datosBebidas);
         setIsPending(false); 
       });
     } catch (error) {
@@ -61,11 +61,11 @@ export default function Comida({ datos }) {
 
   return (
     <View style={styles.container}>
-      {comida ? (
+      {bebidas ? (
         <>
           <FlatList
             style={styles.flatList}
-            data={comida}
+            data={bebidas}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
               <Elementos item={item} />
