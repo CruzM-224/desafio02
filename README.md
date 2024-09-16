@@ -25,6 +25,9 @@ Este proyecto se basa en la creacion de Una APP para un restaurante de comida me
       
  6) LINK DEL VIDEO EXPLICATIVO DEL CODIGO Y FUNCIONALIDAD:
     
- https://www.youtube.com/watch?v=WjQ3AatFM_o
+      https://youtu.be/mClgEr7ovNg
 
+6) SNACK DEL PROYECTO:
+    
+     https://snack.expo.dev/@cruzm-224/desafiodps02
  
