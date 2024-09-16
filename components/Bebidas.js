@@ -14,7 +14,7 @@ import {
 import Elementos from './Elementos';
 
 
-export default function Bebidas( {datos} ) {
+export default function Bebidas( {datos, cantidad, setCantidad} ) {
   
   //Llamada a la API
   
@@ -68,7 +68,10 @@ export default function Bebidas( {datos} ) {
             data={bebidas}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => (
-              <Elementos item={item} />
+              <Elementos item={item}
+                cantidad={cantidad}
+                setCantidad={setCantidad}
+              />
             )}
           />
         </>

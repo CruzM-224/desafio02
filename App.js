@@ -11,16 +11,14 @@ import Menu from './components/menu';
 import Bebidas from './components/Bebidas';
 import CuentaComp from './components/Cuenta';
 import Login from './components/Login';
-import Historial from './components/Historial';  
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export default function App() {
 
-  const [carrito, setCarrito] = useState([]); //Estado para almacenar los productos en el carrito
-
   //Llamada a la API
+  
   useEffect(() => {
     llamadaAPI()
     .then(() => {
@@ -36,9 +34,18 @@ export default function App() {
 
   // state para verificar si se ha cargado la API
   const [isPending, setIsPending] = useState([]);
+  
+  const [cantidad, setCantidad] = useState(Array(datos.length).fill(0));
 
+  useEffect(() => {
+    if (datos.length > 0) {
+      setCantidad(Array(datos.length).fill(0));
+    }
+  }, [datos]);
+  
 
   // Función para llamar a la API
+
   async function llamadaAPI() {
     try{
       setIsPending(true);
@@ -57,23 +64,20 @@ export default function App() {
     return <Text style={styles.paragraph}>Cargando...</Text>
   }
   
-  // Función para agregar productos al carrito
-  const agregarProducto = (producto) => {
-    setCarrito([...carrito, producto]);  // Agregar el producto seleccionado al carrito
-  };
-
   const Stack = createNativeStackNavigator();
   
   function HomeScreen() {
     return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.paragraph}>
-          Bienvenido a El Oaxaqueno.
+          Bienvenido a El Oaxaqueño.
           Selecciona lo que deseas ordenar.
         </Text>
         <View style={styles.menu}>
           <Comida
-            datos={datos} agregarProducto={agregarProducto}
+            datos={datos}
+            cantidad={cantidad}
+            setCantidad={setCantidad}
           />
         </View>
         <Menu
@@ -89,11 +93,13 @@ export default function App() {
     return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.paragraph}>
-          Bebidas
+          Disfruta de nuestras exquisitas bebidas.
         </Text>
         <View style={styles.menu}>
           <Bebidas 
-            datos={datos} agregarProducto={agregarProducto}
+            datos={datos}
+            cantidad={cantidad}
+            setCantidad={setCantidad}
           />
         </View>
         <Menu
@@ -108,10 +114,14 @@ export default function App() {
     return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.paragraph}>
-          Cuenta
+          Esta es la cuenta, seguro que no quieres algo más?
         </Text>
         <View style={styles.menu}>
-          <CuentaComp carrito={carrito}/>
+          <CuentaComp 
+            datos={datos}
+            cantidad={cantidad}
+            setCantidad={setCantidad}
+          />
         </View>
         <Menu
           routeHome="Menu"
@@ -132,7 +142,6 @@ export default function App() {
         />
         <Stack.Screen name="Bebidas" component={Bebida} />
         <Stack.Screen name="Cuenta" component={Cuenta} />
-        <Stack.Screen name="Historial" component={Historial} />
       </Stack.Navigator>
     </NavigationContainer>
   );

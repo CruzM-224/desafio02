@@ -14,9 +14,19 @@ import {
 import IconPlus from '../assets/plus';
 import IconMinus from '../assets/minus';
 
-export default function Elementos({ item }) {
+export default function Elementos({ item, cantidad, setCantidad }) {
 
-    const [cantidad, setCantidad] = useState(0);
+    const [cantidadIndividual, setCantidadIndividual] = useState(cantidad[item.id - 1]);
+
+
+    useEffect(() => {
+        const nuevasCantidades = cantidad.slice();
+        if (nuevasCantidades[item.id - 1] != cantidadIndividual) {
+            nuevasCantidades[item.id - 1] = cantidadIndividual; // Solo actualiza si es necesario
+            setCantidad(nuevasCantidades); // Actualiza el estado global
+        }
+    }, [cantidadIndividual, item.id, setCantidad]);
+
 
     return(
         <View style={styles.elementos}>
@@ -30,7 +40,7 @@ export default function Elementos({ item }) {
                 />
                 <Text style={styles.precio}>${item.price}</Text>
                 <Pressable 
-                onPress={() => setCantidad(cantidad + 1)}
+                onPress={() => setCantidadIndividual(cantidadIndividual + 1)}
                 style={({pressed}) => [
                 {
                     backgroundColor: pressed ? 'rgb(210, 230, 255)' : '#ecf0f1',
@@ -40,12 +50,12 @@ export default function Elementos({ item }) {
                 <IconPlus />
                 </Pressable>
 
-                <Text style={styles.cantidad}>{cantidad}</Text>
+                <Text style={styles.cantidad}>{cantidadIndividual}</Text>
 
                 <Pressable 
                 onPress={() => {
-                    cantidad > 0 &&
-                    setCantidad(cantidad - 1)
+                    cantidadIndividual > 0 &&
+                    setCantidadIndividual(cantidadIndividual - 1)
                 }}
                 style={({pressed}) => [
                 {
