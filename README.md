@@ -7,9 +7,9 @@ Este proyecto se basa en la creacion de Una APP para un restaurante de comida me
 
  1) INTEGRANTES DEL EQUIPO:
 
-     - Carlos Alexander Alvarenga Claros (AC211104)
+  - Carlos Alexander Alvarenga Claros (AC211104)
     
-     - Cruz Enrique Moreno Lozano (ML210800)
+  - Cruz Enrique Moreno Lozano (ML210800)
      
      
  3) MATERIA:
