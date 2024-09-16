@@ -10,14 +10,17 @@ import Comida from './components/Comida';
 import Menu from './components/menu';
 import Bebidas from './components/Bebidas';
 import CuentaComp from './components/Cuenta';
+import Login from './components/Login';
+import Historial from './components/Historial';  
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export default function App() {
 
+  const [carrito, setCarrito] = useState([]); //Estado para almacenar los productos en el carrito
+
   //Llamada a la API
-  
   useEffect(() => {
     llamadaAPI()
     .then(() => {
@@ -36,7 +39,6 @@ export default function App() {
 
 
   // Función para llamar a la API
-
   async function llamadaAPI() {
     try{
       setIsPending(true);
@@ -55,6 +57,11 @@ export default function App() {
     return <Text style={styles.paragraph}>Cargando...</Text>
   }
   
+  // Función para agregar productos al carrito
+  const agregarProducto = (producto) => {
+    setCarrito([...carrito, producto]);  // Agregar el producto seleccionado al carrito
+  };
+
   const Stack = createNativeStackNavigator();
   
   function HomeScreen() {
@@ -66,7 +73,7 @@ export default function App() {
         </Text>
         <View style={styles.menu}>
           <Comida
-            datos={datos}
+            datos={datos} agregarProducto={agregarProducto}
           />
         </View>
         <Menu
@@ -86,7 +93,7 @@ export default function App() {
         </Text>
         <View style={styles.menu}>
           <Bebidas 
-            datos={datos}
+            datos={datos} agregarProducto={agregarProducto}
           />
         </View>
         <Menu
@@ -104,7 +111,7 @@ export default function App() {
           Cuenta
         </Text>
         <View style={styles.menu}>
-          <CuentaComp />
+          <CuentaComp carrito={carrito}/>
         </View>
         <Menu
           routeHome="Menu"
@@ -117,13 +124,15 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={Login}/>
         <Stack.Screen name="Menu" 
           component={HomeScreen}
           options={{ title: 'El Oaxaqueno' }}
         />
         <Stack.Screen name="Bebidas" component={Bebida} />
         <Stack.Screen name="Cuenta" component={Cuenta} />
+        <Stack.Screen name="Historial" component={Historial} />
       </Stack.Navigator>
     </NavigationContainer>
   );
