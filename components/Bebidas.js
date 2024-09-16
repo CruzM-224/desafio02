@@ -41,11 +41,11 @@ export default function Bebidas( {datos} ) {
     try{
       setIsPending(true);
       let datosBebidas = [];
-    datos.forEach(element => {
-      if (element.type === "bebida") {
-        datosBebidas.push(element);
-      }
-    });
+      datos.forEach(element => {
+        if (element.type === "bebida") {
+          datosBebidas.push(element);
+        }
+      });
       startTransition(() => { 
         setBebidas(datosBebidas);
         setIsPending(false); 
