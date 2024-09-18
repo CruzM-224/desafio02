@@ -32,5 +32,6 @@ Este proyecto se basa en la creacion de Una APP para un restaurante de comida me
      https://snack.expo.dev/@cruzm-224/desafiodps02
 
      Usuario: usuarioDPS
+   
      Contraseña: 123
  
